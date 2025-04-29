@@ -20,13 +20,22 @@ body {
 }
 
 #bird {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 200px; 
     background: url("./asset/bird.png") no-repeat center center;
     background-size: cover;
     position: absolute;
     top: 50%;
     left: 40%;
+}
+
+#score {
+    top: 75%;
+    left: 50%;
+    width: 500px;
+    height: 55px;
+    font-size: 60px;
+    padding: 2.5%;
 }
 
 #game_container {
@@ -48,7 +57,6 @@ body {
     height: 100px;
     background-color: green;
     color: white;
-    font-size: 24px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
