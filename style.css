@@ -1,7 +1,14 @@
+@font-face {
+    font-family: "Gothic";
+    src: url(./asset/CloisterBlackLight-axjg.ttf) ;
+  }
+  
+
+
 body {
     margin: 0;
     background: lightblue;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Gothic", Times, serif !important;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -9,7 +16,7 @@ body {
 .button {
     background: green;
     color: white;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Gothic", Times, serif;
 }
 
 #bird {
@@ -33,10 +40,11 @@ body {
 
 #start_button {
     position: absolute;
+    padding: 10px;
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
+    width: 250px;
     height: 100px;
     background-color: green;
     color: white;
@@ -44,4 +52,7 @@ body {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    font-family: "Gothic", Times, serif;
+    font-size: 40px;
+    
 }
