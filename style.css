@@ -20,8 +20,8 @@ body {
 }
 
 #bird {
-    width: 300px;
-    height: 200px; 
+    width: 150px;
+    height: 100px; 
     background: url("./asset/bird.png") no-repeat center center;
     background-size: cover;
     position: absolute;
@@ -34,8 +34,10 @@ body {
     left: 50%;
     width: 500px;
     height: 55px;
-    font-size: 60px;
     padding: 2.5%;
+    font-size: 60px;
+    color: lightgray;
+    
 }
 
 #game_container {
@@ -63,4 +65,21 @@ body {
     font-family: "Gothic", Times, serif;
     font-size: 40px;
     
+}
+.pipe {
+    position: absolute;
+    width: 120px;
+    /*background-color: green;*/
+    background: url("./asset/pipe.png") no-repeat center center;
+    
+}
+.top_pipe {
+    top: 0;
+    /*border-bottom: darkgreen;*/
+    background: url("./asset/pipe_Top.png") no-repeat center center;
+}
+
+.bottom_pipe {
+    /*border-bottom: darkgreen;*/
+    background: url("./asset/pipe_Bottom.png") no-repeat center center;
 }
