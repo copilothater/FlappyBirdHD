@@ -17,26 +17,31 @@ body {
     background: green;
     color: white;
     font-family: "Gothic", Times, serif;
+    font-size: 100%;
+    size: 150%;
 }
 
 #bird {
-    width: 150px;
-    height: 100px; 
+    width: 170px;
+    height: 150px; 
+    scale: 0.5;
     background: url("./asset/bird.png") no-repeat center center;
     background-size: cover;
     position: absolute;
-    top: 50%;
-    left: 40%;
+    top: 45%;
+    left: 45%;
+    transform-origin: center;
+    transition: transform 0.1s ease-in-out;
 }
 
 #score {
     top: 75%;
     left: 50%;
-    width: 500px;
+    width: 1000px;
     height: 55px;
     padding: 2.5%;
     font-size: 60px;
-    color: lightgray;
+    color: white;
     
 }
 
@@ -51,24 +56,24 @@ body {
 
 #start_button {
     position: absolute;
-    padding: 10px;
-    top: 75%;
+    padding: 0px;
+    top: 72%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 250px;
-    height: 100px;
+    width: 350px;
+    height: 175px;
     background-color: green;
     color: white;
     border-radius: 10px;
     border: none;
     cursor: pointer;
     font-family: "Gothic", Times, serif;
-    font-size: 40px;
+    font-size: 75px;
     
 }
 .pipe {
     position: absolute;
-    width: 120px;
+    width: 60px;
     /*background-color: green;*/
     background: url("./asset/pipe.png") no-repeat center center;
     
@@ -82,4 +87,18 @@ body {
 .bottom_pipe {
     /*border-bottom: darkgreen;*/
     background: url("./asset/pipe_Bottom.png") no-repeat center center;
+}
+
+/*.pipe img {
+    width: 100%;
+    height: 100%;
+}*/
+
+#difficulty {
+    position: absolute;
+    padding: 10px;
+    top: 85%;
+    left: 47.5%;
+    font-size: 16px;
+    border-radius: 5px;
 }
