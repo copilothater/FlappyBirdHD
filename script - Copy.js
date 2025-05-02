@@ -11,9 +11,6 @@ let angle = 0;
 let pipe_speed = 2;
 let highscore = localStorage.getItem("highscore") || 0;
 let score_multiplier = 1;
-let reverse_mode = false;
-let reverse = 1;
-let counter = 0;
 
 
 let bird = document.getElementById("bird");
@@ -21,9 +18,10 @@ let difficulty = document.getElementById("difficulty");
 let score_display = document.getElementById("score");
 let game_container = document.getElementById("game_container");
 let start_button = document.getElementById("start_button");
-
+let popup_overlay = document.getElementById("popup_overlay");
 let popup = document.getElementById("popup");
-
+let restart_button = document.getElementById("restart_button");
+let final_score = document.getElementById("final_score");
 
 
 const hitSound = new Audio("./asset/hit_sound.mp3");
@@ -35,13 +33,12 @@ document.addEventListener("keydown", (e) => {
   if (e.code === "Space" || e.code === "ArrowUp" || e.code === "MouseDown") {
     if (game_state !== "Play") {
       game_state = "Play";
-      
       startGame();
       hideStartButton();
     }
     // hitSound.play();
 
-    counter++;
+
     bird_dy = -5;
   }
 });
@@ -66,12 +63,6 @@ function getDifficultySettings() {
     pipe_speed = 5;
     frame_time = 300;
     score_multiplier = 3;
-  } else if (selected === "reverse") {
-    pipe_gap = 300;
-    pipe_speed = 3;
-    frame_time = 250;
-    score_multiplier = 4;
-    reverse_mode = true;
   }
 }
 
@@ -86,17 +77,7 @@ function setScore(newScore) {
 
 
 function applyGravity() {
-  if (reverse_mode === true) {
-    if (counter % 2 == 0) { 
-      reverse = 1;
-    } else {
-      reverse = -1;
-    }
-  } else {
-      reverse = 1;
-  }
-  
-  bird_dy += (gravity*reverse); 
+  bird_dy += gravity;
   let birdTop = bird.offsetTop + bird_dy;
   birdTop = Math.max(birdTop, 0);
   birdTop = Math.min(birdTop, game_container.offsetHeight - bird.offsetHeight);
@@ -154,6 +135,19 @@ function movePipes() {
   pipes = pipes.filter((pipe) => pipe.offsetLeft + pipe.offsetWidth > 0);
 }
 
+function showPopup() {
+  if (game_state === "End") {
+    document.getElementById("popup_overlay").style.display = "block";
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("final_score").style.display = "block";
+    document.getElementById("restart_button").style.display = "block";
+  } else {
+    document.getElementById("popup_overlay").style.display = "none";
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("final_score").style.display = "none";
+    document.getElementById("restart_button").style.display = "none";
+  }
+}
 
 function hideStartButton() {
   if (game_state === "Play") {
@@ -171,8 +165,11 @@ function startGame() {
 
 
   game_interval = setInterval(() => {
+    
+    game_state = "Start";
 
-    //updateBirdAvatar(score);
+    showPopup();
+    updateBirdAvatar(score);
     applyGravity();
     movePipes();
     checkCollision();
@@ -208,36 +205,35 @@ function resetGame() {
   pipes = [];
   setScore(0);
   frame = 0;
-  game_state = "Start";
-  //score_display.textContent = "";
-  hideStartButton();
-
-
-  popup.style.visibility = "hidden";
-
+  showPopup();
+  document.getElementById("final_score").textContent = "Your score is: " + score;
 }
 
+function onRestartButton() {
+  game_state = "Start";
+  hideStartButton();
+  showPopup()
+}
 
 function endGame() {
+
+  game_state = "End";
+
   backgroundMusic.pause();
   backgroundMusic.currentTime = 0;
   hitSound.play();
 
+  
 
   if (Number(score) > Number(highscore)) {
     localStorage.setItem("highscore", score);
   }
 
 
-  clearInterval(game_interval);
+  //clearInterval(game_interval);
+
   game_interval = null;
   //alert("Game Over! Your score is: " + score);
-
-  popup.style.visibility = "visible";
-  const score_popup = document.getElementById("finalScore");
-  score_popup.textContent = "Your Score: " + score;
-
-  document.getElementById("restart_button").onclick = resetGame;
 }
 
 
@@ -245,9 +241,10 @@ function onStartButton() {
   if (game_state !== "Play") {
     game_state = "Play";
 
-
+    showPopup()
     startGame();
     hideStartButton();
+    
 
 
     //backgroundMusic.loop = true;
@@ -297,13 +294,14 @@ function checkCollision() {
 }
 
 
-function updateBirdAvatar(score) {
-  if (score >= 5 && score < 10) {
-    bird.style.background = "url(./asset/bird2.jpg)";
-  } else if (score >= 10 && score < 15) {
-    bird.style.background = "url(./asset/bird3.jpg)";
-  }
-}
+//function updateBirdAvatar(score) {
+//  if (score >= 5 && score < 10) {
+//    bird.style.background = "url(./asset/bird2.jpg)";
+//  } else if (score >= 10 && score < 15) {
+//    bird.style.background = "url(./asset/bird3.jpg)";
+//  }
+//}
+
 // if u use background in css (which i did )// bird.style.background = "url('./asset/bird1.png')";
 
 

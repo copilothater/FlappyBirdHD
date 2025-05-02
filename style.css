@@ -102,3 +102,62 @@ body {
     font-size: 16px;
     border-radius: 5px;
 }
+
+#popup-overlay {
+    display: none;
+    position: fixed;
+    top: 55%;
+    left: 45%;
+    width: 300px;
+    height: 200px;
+    background-color: green;
+    align-items: center;
+}
+
+#popup {
+    font-family: "Gothic";
+    position: absolute; 
+    top: 55%;
+    left: 50%;
+    height: 250px;
+    width: 350px;
+    transform: translate(-50%, -50%);
+    background-color: lightgreen;
+    padding: 0px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 32px;
+    
+    visibility: hidden;
+
+}
+
+#restart_button {
+    font-family: "Gothic";
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    left: 40%;
+    top: 75%;
+}
+
+#gameOverText {
+    font-family: "Gothic";
+    font-size: 57px;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#finalScore {
+    font-family: "Gothic";
+    font-size: 32px;
+    color: black;
+    text-align: center;
+    margin-top: 5px;
+}

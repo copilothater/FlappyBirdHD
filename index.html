@@ -6,6 +6,7 @@
     <meta name="description" content="prepare to be disapointed">
     <link rel="stylesheet" href="style.css"/>
     <script src="script.js" defer></script>
+    <link rel="icon" type="image/png" href="asset/icon.png"/>
   </head>
 
   <body>
@@ -19,10 +20,17 @@
       <option value="easy">Easy</option>
       <option value="medium">Medium</option>
       <option value="hard">Hard</option>
+      <option value="reverse">Reverse</option>
     </select>
+
+    <class="popup-overlay" id="popup">
+      <div class="popup">
+        <h2 id="gameOverText">Game Over</h2>
+        <p id="finalScore">Your Score:</p>
+        <button id="restart_button" onclick="onRestartButton(), showPopup()">Restart</button>
 
   </body>
 
 </html>
   
-  
+   
